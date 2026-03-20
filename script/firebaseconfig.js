@@ -114,7 +114,8 @@ const postBtn = document.getElementById("postBtn");
 const usernameInput = document.getElementById("usernameInput");
 const messageInput = document.getElementById("messageInput");
 
-postBtn.addEventListener("click", async () => {
+postBtn.addEventListener("click", async (e) => {
+  e.preventDefault();
   // Censurera namn och meddelande innan vi skickar
   const censoredName = censorBadWords(usernameInput.value.trim());
   const censoredMessage = censorBadWords(messageInput.value.trim());
