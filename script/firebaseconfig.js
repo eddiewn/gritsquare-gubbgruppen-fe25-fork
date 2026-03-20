@@ -109,50 +109,48 @@ export function displayAllUsers(users) {
 }
 
 
-// Event listener för knappen 
 const postBtn = document.getElementById("postBtn");
 const usernameInput = document.getElementById("usernameInput");
 const messageInput = document.getElementById("messageInput");
 
+// Skapa Audio-objekt med dynamisk sökväg
+const audioPath = window.location.hostname.includes("github.io")
+  ? "/gritsquare-gubbgruppen-fe25/audio/pop.mp3" // GitHub Pages path
+  : "./audio/pop.mp3"; // lokal path
+const popSound = new Audio(audioPath);
+
 postBtn.addEventListener("click", async (e) => {
-  e.preventDefault(); // förhindrar formulärets default-submit
+  e.preventDefault();
 
   // Censurera namn och meddelande
   const censoredName = censorBadWords(usernameInput.value.trim());
   const censoredMessage = censorBadWords(messageInput.value.trim());
 
-  if (!censoredName || !censoredMessage) {
-    alert("Please enter both username and message!");
-    return;
-  }
-
-  // Skapa user-objekt
   const userObj = {
     owner: auth.currentUser ? auth.currentUser.uid : "anonymous",
     name: censoredName,
     message: censoredMessage
-  };
+  }; 
 
-  try {
-    // Skicka till Firebase
-    const response = await postUser(userObj);
+  if (!userObj.name || !userObj.message) {
+    alert("Please enter both username and message!");
+    return;
+  } 
 
-    if (!response) throw new Error("Failed to post message");
+  const response = await postUser(userObj);
 
-    // Hämta och visa alla users igen
+  if (response) {
     const users = await getAllUsers();
     displayAllUsers(users);
 
-    //  Spela upp pop-ljud
-    const audio = new Audio("../audio/pop.mp3"); // justera sökväg om behövs
-    audio.play().catch(err => console.warn("Audio playback failed:", err));
+    // Spela ljudet efter lyckad post
+    popSound.currentTime = 0; // starta från början
+    popSound.play();
 
     // Töm inputfält
     usernameInput.value = "";
     messageInput.value = "";
-
-  } catch (err) {
-    console.error(err);
+  } else {
     alert("Failed to post message, please try again");
   }
 });
