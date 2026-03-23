@@ -126,6 +126,77 @@ body {
 }
 
 .active  {
+  color: #003554
+}
+
+
+
+/* Popup background */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px); /* Added blur for premium look */
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Popup box */
+.popup-content {
+  background: white;
+  padding: 20px;
+  max-width: 500px; /* Increased width for scrollable text */
+  border-radius: 10px;
+  text-align: center;
+  max-height: 80vh; /* Limit height for scrolling */
+  overflow-y: auto; /* Make content scrollable */
+  color: #000; /* Added to ensure text is visible on white background */
+}
+
+/* Button */
+#acceptBtn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #ee6c4d ;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#acceptBtn:hover {
+  background: #003554;
+}
+
+/* Added styles for decline button and checkbox */
+#declineBtn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #ccc;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+#declineBtn:hover {
+  background: #aaa;
+}
+
+.checkbox-container {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkbox-container input {
+  margin-right: 10px;
   color: var(--surface) !important
 }
 
@@ -174,4 +245,90 @@ footer .text-muted {
     "CRSV" 0.5,
     "ELSH" 0,
     "ELXP" 0;
+}
+
+/* Blob Animation */
+.blobs {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  background: #ee6c4d;
+  animation: float 8s infinite ease-in-out;
+  filter: blur(40px);
+  opacity: 0.6;
+}
+
+.blob:nth-child(1) {
+  top: 10%;
+  left: 10%;
+  width: 200px;
+  height: 200px;
+  animation: float 8s infinite ease-in-out;
+}
+
+.blob:nth-child(2) {
+  top: 60%;
+  left: 80%;
+  width: 150px;
+  height: 150px;
+  animation: float 10s infinite ease-in-out reverse;
+}
+
+.blob:nth-child(3) {
+  top: 40%;
+  left: 40%;
+  width: 100px;
+  height: 100px;
+  animation: float 12s infinite ease-in-out;
+}
+
+.blob:nth-child(4) {
+  top: 20%;
+  left: 70%;
+  width: 120px;
+  height: 120px;
+  animation: float 9s infinite ease-in-out reverse;
+}
+
+.blob:nth-child(5) {
+  top: 70%;
+  left: 20%;
+  width: 180px;
+  height: 180px;
+  animation: float 11s infinite ease-in-out;
+}
+
+.blob:nth-child(6) {
+  top: 50%;
+  left: 60%;
+  width: 80px;
+  height: 80px;
+  animation: float 7s infinite ease-in-out reverse;
+}
+
+/* Blob Animation Keyframes - More Dynamic Movement */
+@keyframes float {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  50% {
+    transform: translate(-30px, -100px) scale(0.9);
+  }
+  75% {
+    transform: translate(50px, -30px) scale(1.05);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
 }
