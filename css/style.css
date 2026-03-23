@@ -1,5 +1,39 @@
+:root {
+  /* Theme tokens (dark = default) */
+  --bg: #051923;
+  --surface: #003554;
+  --text: #ffffff;
+  --accent: #ee6c4d;
+  --accent-strong: #e15f41;
+  --accent-stronger: #d75a3e;
+  --btn-bg: #003554;
+  --btn-bg-hover: #002a43;
+  --btn-bg-active: #002439;
+  --btn-focus-rgb: 0, 53, 84;
+}
+
+:root[data-theme="light"] {
+  /* Light mode placeholders */
+  --bg: #f6f7fb;
+  --surface: #ffffff;
+  --text: #0b1a24;
+  --accent: #ee6c4d;
+  --accent-strong: #e15f41;
+  --accent-stronger: #d75a3e;
+  --btn-bg: #003554;
+  --btn-bg-hover: #002a43;
+  --btn-bg-active: #002439;
+  --btn-focus-rgb: 0, 53, 84;
+}
+
 body {
-  background-color: #051923;
+  background-color: var(--bg) !important;
+  color: var(--text);
+}
+
+/* Fix Bootstrap's text-light in light mode */
+:root[data-theme="light"] .text-light {
+  color: var(--text) !important;
 }
 
 /* Message */
@@ -51,44 +85,44 @@ body {
 /* ====== Section: Colors ====== */
 /* orange */
 .burnt-peach-bg {
-  background-color: #ee6c4d;
+  background-color: var(--accent);
 }
 .burnt-peach {
-  color: #ee6c4d;
+  color: var(--accent);
 }
 /* Blue */
 .deep-space-blue {
-  color: #003554;
+  color: var(--surface);
 }
 .deep-space-blue-bg { 
-  background-color: #003554;
+  background-color: var(--surface);
 }
 /* Darker blue */
 .ink-black {
-  color: #051923 ;
+  color: var(--bg);
 }
 .ink-black-bg {
-  background-color: #051923;
+  background-color: var(--bg);
 }
 
 .white {
-  color: white;
+  color: var(--text);
 }
 .white-bg {
-  background-color: white;
+  background-color: #ffffff;
 }
 /* ====== Section: Colors ====== */
 
 .bg-main {
-  background-color: #003554;
+  background-color: var(--surface);
 }
 
 .nav-pills {
-  --bs-nav-pills-link-active-bg: #ee6c4d !important;
+  --bs-nav-pills-link-active-bg: var(--accent) !important;
 }
 
 .nav-link {
-  color: #ee6c4d !important;
+  color: var(--accent) !important;
 }
 
 .active  {
@@ -162,18 +196,41 @@ body {
 
 .checkbox-container input {
   margin-right: 10px;
+  color: var(--surface) !important
+}
+
+.footer-social a {
+  color: var(--text) !important;
+  opacity: 0.7;
+  font-size: 1.25rem;
+  transition: color 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+}
+
+.footer-social a:hover {
+  color: var(--accent) !important;
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.footer-social .bi {
+  display: inline-block;
+}
+
+footer .text-muted {
+  color: var(--text) !important;
+  opacity: 0.7;
 }
 
 .btn-burnt-peach {
   --bs-btn-color: #ffffff;
-  --bs-btn-bg: #ee6c4d;
-  --bs-btn-border-color: #ee6c4d;
+  --bs-btn-bg: var(--btn-bg);
+  --bs-btn-border-color: var(--btn-bg);
   --bs-btn-hover-color: #ffffff;
-  --bs-btn-hover-bg: #e15f41;
-  --bs-btn-hover-border-color: #d75a3e;
-  --bs-btn-focus-shadow-rgb: 238, 108, 77;
+  --bs-btn-hover-bg: var(--btn-bg-hover);
+  --bs-btn-hover-border-color: var(--btn-bg-hover);
+  --bs-btn-focus-shadow-rgb: var(--btn-focus-rgb);
   --bs-btn-active-color: #ffffff;
-  --bs-btn-active-bg: #d75a3e;
+  --bs-btn-active-bg: var(--btn-bg-active);
   --bs-btn-active-border-color: #cc553a;
 }
 
