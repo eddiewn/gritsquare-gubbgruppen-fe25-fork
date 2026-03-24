@@ -8,5 +8,6 @@ Wish to contribute? Here are some features we would like to see in the future:
 - Color picker for text on messages
 - Hover to show timestamps, timestamps hidden otherwise
 - Option to edit messages and edit history
-- Character type rate limit (bot prevention)
+- Character type rate limit (bot/spam prevention)
 - click on message to expand msgbox and to be able to reply to message 
+- filter button to hide messages from users not logged in
