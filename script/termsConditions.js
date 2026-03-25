@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
   function hasUserAcceptedTerms() {
     return localStorage.getItem(TERMS_ACCEPTED_KEY) === 'true';
   }
-
+localStorage.setItem(TERMS_ACCEPTED_KEY, 'true');
   
   function showTermsModal() {
     if (termsModal) {
