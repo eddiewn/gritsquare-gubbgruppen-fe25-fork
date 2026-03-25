@@ -1,4 +1,4 @@
-const baseUrl = "https://flaskpost-8adcc-default-rtdb.europe-west1.firebasedatabase.app/users";
+const baseUrl = "https://flaskpost-8adcc-default-rtdb.europe-west1.firebasedatabase.app/";
 
 export async function getAllUsers() {
   const url = baseUrl + ".json";
