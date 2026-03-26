@@ -53,6 +53,34 @@ export function sortUsersByFavorites(users, favoritesSet = new Set()) {
 
             return (b.createdAt || 0) - (a.createdAt || 0);
         });
+    div.setAttribute("draggable", true);
+    div.dataset.key = key;
+
+    const timeText = user.createdAt ? new Date(user.createdAt).toLocaleString("sv-SE") : "";
+
+div.innerHTML = `
+  <div class="message-content">
+    <div class="message-head">
+      <div><strong>${user.name}</strong>: <span style="color: ${user.color || "#000"}">${user.message || "Inget meddelande"}</span></div>
+      <button class="favorite-btn ${isFavorite ? "is-favorite" : ""}" type="button" aria-label="Favoritmarkera meddelande">
+        ${isFavorite ? "★" : "☆"}
+      </button>
+    </div>
+    <div class="message-time-div rounded">
+      <small class="message-time">${timeText}</small>
+    </div>
+    <button class="like-btn">❤️ 0</button>
+  </div>
+`;
+const likeBtn = div.querySelector(".like-btn");
+let likes = 0;
+
+likeBtn.addEventListener("click", () => {
+  likes++;
+  likeBtn.textContent = `❤️ ${likes}`;
+
+if (likes % 10 === 0) {
+  showFirework();
 }
 
 export function displayAllUsers(
