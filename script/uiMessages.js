@@ -2,6 +2,7 @@ import { renderReplies } from "./main.js";
 import { sendReply } from "./sendReply.js";
 import { getAllReplies } from "./userApi.js";
 
+
 export function sortUsersByCreatedAt(users) {
     if (!users) return [];
     return Object.entries(users).sort(
@@ -67,7 +68,6 @@ export function displayAllUsers(
     const favoritesSet = options.favoritesSet || new Set();
     const onFavoriteToggle = options.onFavoriteToggle;
     const replies = options.replies || {};
-    
 
     sortFunction(users).forEach(([key, user]) => {
         if (!user) return;
@@ -155,7 +155,7 @@ export function displayAllUsers(
             </div>            
             `;
 
-            const replyDiv = document.createElement("div");
+        const replyDiv = document.createElement("div");
         const likeBtn = div.querySelector(".like-btn");
         let likes = 0;
 
@@ -189,7 +189,7 @@ export function displayAllUsers(
         div.addEventListener("dragend", () => div.classList.remove("dragging"));
 
         messagesList.append(div, replyDiv);
-            console.log(replies)
-            renderReplies(replies, key, replyDiv);
+        console.log(replies);
+        renderReplies(replies, key, replyDiv);
     });
 }
